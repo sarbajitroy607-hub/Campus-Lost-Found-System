@@ -63,7 +63,7 @@ A full-stack web application that helps students and staff report, find, and rec
 ## 📁 Project Structure
 
 ```
-SmartcampusLostandFoundManagementsystem/
+CampusLostandFoundManagementsystem/
 ├── server/
 │   └── src/
 │       ├── claims/
