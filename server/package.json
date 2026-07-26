@@ -11,16 +11,7 @@
     "staging": "cross-env NODE_ENV=staging nodemon src/index.js",
     "start": "cross-env NODE_ENV=production nodemon src/index.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/harjotkataria1/SmartcampusLostandFoundManagementsystem.git"
-  },
-  "author": "harjot",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/harjotkataria1/SmartcampusLostandFoundManagementsystem/issues"
-  },
-  "homepage": "https://github.com/harjotkataria1/SmartcampusLostandFoundManagementsystem#readme",
+  
   "dependencies": {
     "bcrypt": "^6.0.0",
     "cors": "^2.8.6",
