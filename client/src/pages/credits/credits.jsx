@@ -1,6 +1,6 @@
 import React from "react";
 import { Award, Braces, Code2, Database, Heart, Server, Sparkles } from "lucide-react";
-import Navbar from "../../components/navbar/navbar.jsx";
+import Navbar from "../../components/navbar/Navbar.jsx";
 import Sidebar from "../../components/sidebar/sidebar.jsx";
 
 const technologyGroups = [
