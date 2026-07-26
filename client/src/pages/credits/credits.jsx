@@ -29,7 +29,7 @@ const Credits = () => (
         <div className="rounded-3xl border border-white/80 bg-white/90 p-6 shadow-xl backdrop-blur md:p-8">
           <div className="flex flex-col items-start gap-5 sm:flex-row sm:items-center">
             <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-indigo-500 to-purple-600 text-white shadow-lg shadow-indigo-200"><Award size={30} /></div>
-            <div><p className="text-sm font-semibold uppercase tracking-[0.2em] text-indigo-500">Designed &amp; Developed By</p><h2 className="mt-1 text-3xl font-bold text-slate-800">Sarbajit Roy</h2><p className="mt-1 text-slate-500">B.Tech CSE, 3rd Year</p></div>
+            <div><p className="text-sm font-semibold uppercase tracking-[0.2em] text-indigo-500">Designed &amp; Developed By</p><h2 className="mt-1 text-3xl font-bold text-slate-800">Sarbajit Roy &amp; Sauharja Nath</h2><p className="mt-1 text-slate-500">B.Tech CSE, 3rd Year</p></div>
             <div className="inline-flex items-center gap-2 rounded-xl bg-rose-50 px-4 py-2 text-sm font-medium text-rose-600 sm:ml-auto"><Heart size={16} className="fill-current" /> Made with care</div>
           </div>
         </div>

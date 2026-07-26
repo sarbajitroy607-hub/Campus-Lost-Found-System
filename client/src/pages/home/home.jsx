@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router";
-import FloatingLines from "../../components/floatingLines/FloatingLines.jsx";
+import campusHomeImage from "../../assets/campus-home.jpg";
 
 
 // ── Mobile drawer ─────────────────────────────────────────────────────
@@ -50,34 +50,22 @@ const Home = () => {
   return (
     <div
       className="h-screen w-screen overflow-hidden flex flex-col relative"
-      style={{
-        background: "linear-gradient(135deg, #312e81 0%, #4f46e5 40%, #7c3aed 100%)",
-      }}
+      style={{ backgroundColor: "#1e1b4b" }}
     >
 
       {/* ── FloatingLines — fills entire screen ── */}
-      <div className="absolute inset-0 z-0 pointer-events-none">
-        <FloatingLines
-          enabledWaves={["top", "middle", "bottom"]}
-          lineCount={8}
-          lineDistance={8}
-          bendRadius={8}
-          bendStrength={-2}
-          interactive
-          parallax={true}
-          animationSpeed={1}
-          gradientStart="#a78bfa"
-          gradientMid="#818cf8"
-          gradientEnd="#c4b5fd"
-        />
-      </div>
+      <img
+        src={campusHomeImage}
+        alt="Campus grounds"
+        className="absolute inset-0 z-0 h-full w-full object-cover"
+      />
 
       {/* Subtle vignette overlay */}
       <div
         className="absolute inset-0 z-0 pointer-events-none"
         style={{
           background:
-            "radial-gradient(ellipse at 60% 40%, rgba(99,102,241,0.25) 0%, transparent 70%)",
+            "linear-gradient(135deg, rgba(30,27,75,0.82) 0%, rgba(67,56,202,0.6) 45%, rgba(30,27,75,0.7) 100%)",
         }}
       />
 
