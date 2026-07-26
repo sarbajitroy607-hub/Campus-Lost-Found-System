@@ -32,12 +32,20 @@ function configureApp(app) {
 
 
 // CORS Configuration with Multiple Origins and Regex Support
-const allowedOrigins = [
+const defaultAllowedOrigins = [
   'http://localhost:5173',
   'http://localhost:3000',
   /\.app\.github\.dev$/,    // GitHub Codespaces
   /\.devtunnels\.ms$/,      // VS Code Dev Tunnels ← add this
 ];
+
+// Comma-separated frontend URLs, e.g. https://campus-lost-found.onrender.com
+const configuredOrigins = (process.env.CORS_ORIGINS || "")
+  .split(",")
+  .map((origin) => origin.trim())
+  .filter(Boolean);
+
+const allowedOrigins = [...defaultAllowedOrigins, ...configuredOrigins];
 
 app.use(cors({
   origin: function (origin, callback) {

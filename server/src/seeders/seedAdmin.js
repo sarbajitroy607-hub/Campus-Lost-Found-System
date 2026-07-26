@@ -4,13 +4,19 @@ const logger = require("../helpers/winston.helper.js");
 
 // ── Default admin credentials ─────────────────────────────────────────
 // Override via .env — never hardcode production credentials
-const ADMIN_EMAIL     = process.env.ADMIN_EMAIL     || "admin@campus.com";
-const ADMIN_PASSWORD  = process.env.ADMIN_PASSWORD  || "Admin@1234";
+const isProduction = process.env.NODE_ENV === "production";
+const ADMIN_EMAIL = process.env.ADMIN_EMAIL || (isProduction ? null : "admin@campus.com");
+const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || (isProduction ? null : "Admin@1234");
 const ADMIN_FIRSTNAME = process.env.ADMIN_FIRSTNAME || "Campus";
-const ADMIN_LASTNAME  = process.env.ADMIN_LASTNAME  || "Admin";
+const ADMIN_LASTNAME = process.env.ADMIN_LASTNAME || "Admin";
 
 async function seedAdmin() {
   try {
+    if (!ADMIN_EMAIL || !ADMIN_PASSWORD) {
+      logger.warn("Skipping admin seed: ADMIN_EMAIL and ADMIN_PASSWORD must be set in production.");
+      return;
+    }
+
     // Check if admin already exists — don't duplicate
     const existing = await User.findOne({ email: ADMIN_EMAIL });
 
