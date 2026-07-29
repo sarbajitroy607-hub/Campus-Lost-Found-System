@@ -158,16 +158,16 @@ The frontend will start on **http://localhost:5173**
 
 ## 🔑 Environment Variables
 
-### server — `server/.env`
+### server — `server/.env.development`
 
 ```env
 # Server
 PORT=3001
 
 # Database
-MONGO_URI=mongodb://localhost:27017/campus_lf
-# For MongoDB Atlas:
-# MONGO_URI=mongodb+srv://<username>:<password>@cluster.mongodb.net/campus_lf
+DATABASE_URL=mongodb://localhost:27017
+DATABASE_NAME=campus_lf
+# For MongoDB Atlas, set DATABASE_URL to the full Atlas connection string.
 
 # JWT
 JWT_SECRET=your_super_secret_key_here
@@ -178,6 +178,9 @@ ADMIN_EMAIL=admin@campus.com
 ADMIN_PASSWORD=Admin@1234
 ADMIN_FIRSTNAME=Campus
 ADMIN_LASTNAME=Admin
+
+# Optional for non-Vercel frontend domains. Separate multiple values with commas.
+CORS_ORIGINS=https://your-frontend.example.com
 ```
 
 ### client — `client/.env`
@@ -186,6 +189,22 @@ ADMIN_LASTNAME=Admin
 # Must end with a trailing slash
 VITE_API_URL=http://localhost:3001/
 ```
+
+---
+
+## Deploying on Render + Vercel
+
+1. Create a **Render Web Service** with `server` as its root directory, `npm install` as the build command, and `npm start` as the start command. In Render's environment settings, add `DATABASE_URL`, `DATABASE_NAME`, `JWT_SECRET`, and the optional admin variables. Do not set `PORT`; Render supplies it.
+2. Create a **Vercel** project with `client` as its root directory. Add this environment variable for Production (and Preview if you use preview deployments):
+
+   ```env
+   VITE_API_URL=https://your-render-service.onrender.com/
+   ```
+
+   The trailing `/` is required. Vite substitutes this value when it builds, so after adding or changing it you must redeploy the Vercel project.
+3. If your frontend uses a custom domain rather than `*.vercel.app`, set the Render variable `CORS_ORIGINS` to its exact origin, for example `https://app.example.com`. Do not add a trailing slash. The backend accepts Vercel production and preview origins automatically.
+
+To verify the deployment, open `https://your-render-service.onrender.com/` in a browser; it should return `Campus Lost & Found API is running`. In the deployed Vercel site's browser DevTools, Network requests must target the Render URL—not `localhost:3001`.
 
 ---
 

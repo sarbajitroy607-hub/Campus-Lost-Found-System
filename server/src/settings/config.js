@@ -35,6 +35,9 @@ function configureApp(app) {
 const defaultAllowedOrigins = [
   'http://localhost:5173',
   'http://localhost:3000',
+  // Vercel production and preview deployments. CORS_ORIGINS below can still
+  // be used to allow a custom frontend domain.
+  /^https:\/\/([a-z0-9-]+\.)*vercel\.app$/i,
   /\.app\.github\.dev$/,    // GitHub Codespaces
   /\.devtunnels\.ms$/,      // VS Code Dev Tunnels ← add this
 ];
